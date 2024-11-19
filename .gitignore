@@ -1,52 +1,66 @@
-# Prerequisites
-*.d
+#include <stdio.h>
+#include <windows.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+void gotoxy (int x, int y){
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
 
-# Linker output
-*.ilk
-*.map
-*.exp
 
-# Precompiled Headers
-*.gch
-*.pch
+void tela(){
+    
+    system("cls");
+    int c;
+    for(c=1; c<=80; c++){
+        gotoxy(c, 01);
+        printf("-");
+        gotoxy(c, 4);
+        printf("-");
+        gotoxy(c, 22);
+        printf("-");
+        gotoxy(c, 24);
+        printf("-");
+    }
+    for(c=1; c<=24; c++){
+        gotoxy(01,c);
+        printf("|");
+        gotoxy(80, c);
+        printf("|");
+    }
+    gotoxy(1,1);
+    printf("+");
+    gotoxy(1,24);
+    printf("+");
+    gotoxy(80,1);
+    printf("+");
+    gotoxy(1,4);
+    printf("+");
+    gotoxy(80,4);
+    printf("+");
+    gotoxy(1,22);
+    printf("+");
+    gotoxy(80,22);
+    printf("+");
+    
+    gotoxy(2,2);
+    printf("UNICV");
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+    gotoxy(29, 2);
+    printf("LOGICA DE PROGRAMACAO");
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+    gotoxy(67,2);
+    printf("ANDRE BERTOLO");
+    
+    gotoxy(80,24);
+    printf("+");
+}
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+int main(){
+    tela();
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+
+return 0;
+}
